@@ -52,7 +52,9 @@ int main()
 
     print_linked_list();
 
+    printf("minimum: ");
     print_node(search_min());
+    printf("maximum: ");
     print_node(search_max());
     printf("sum: %d\n", summ_of_list());
 
@@ -212,7 +214,7 @@ node_t* search_min()
     }
 
     int min = head -> data;
-    node_t* min_node = NULL;
+    node_t* min_node = head;
 
     node_t *foward = head;
     node_t *backward = tail;
@@ -244,7 +246,7 @@ node_t* search_max()
     }
 
     int max = head -> data;
-    node_t* max_node = NULL;
+    node_t* max_node = head;
 
     node_t *foward = head;
     node_t *backward = tail;
@@ -252,7 +254,7 @@ node_t* search_max()
     for (int i = 0; i < (node_counter + 1) / 2; i++) {
 
         if (foward -> data > max) {
-            max = foward -> data;
+            max = foward -> data;https://github.com/greenfox-academy/things_in_c
             max_node = foward;
         }
 
@@ -293,14 +295,3 @@ int summ_of_list()
 
     return sum;
 }
-
-
-
-
-
-
-
-
-
-
-
