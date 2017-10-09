@@ -45,9 +45,9 @@ int main()
 {
     for (int i = 1; i < 9; i++) {
         if (i % 2 == NULL)
-            insert_node(10, FIRST);
+            insert_node(i*2, FIRST);
         else
-            insert_node(10, LAST);
+            insert_node(i, LAST);
     }
 
     print_linked_list();
