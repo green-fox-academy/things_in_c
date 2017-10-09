@@ -1,2 +1,2 @@
 # things_in_c
-Some program examples in C
+Some examples in C
