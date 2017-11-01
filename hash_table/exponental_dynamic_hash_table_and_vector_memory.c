@@ -122,19 +122,25 @@ data_t* search_data(memory_t *memory, uint32_t ID)
     if (memory == NULL || memory -> arr_size == 0)
         return NULL;
 
-    data_t* temp_data;
+    int index = generate_index(memory, ID);
+    int counter = 1;
 
-    for (int i = 0; i < memory -> arr_size; i++)
-    {
+    while (1) {
 
-        if ((memory -> ptr_arr)[i] != NULL && (memory -> ptr_arr)[i] -> ID == ID) {
-            temp_data = (memory -> ptr_arr)[i];
-            return temp_data;
+        if ((memory -> ptr_arr)[index] -> ID == ID) {
+            return (memory -> ptr_arr)[index];
         }
+
+        if (index == memory -> arr_size)
+            index = 0;
+        else
+            index++;
+
+        if (counter == memory -> arr_size)
+            return NULL;
+        else
+            counter++;
     }
-
-    return NULL;
-
 }
 
 
@@ -146,18 +152,28 @@ int remove_data(memory_t *memory, uint32_t ID)
     if (memory -> arr_size == 0)
         return -2;
 
-    for (int i = 0; i < memory -> arr_size; i++)
-    {
+    int index = generate_index(memory, ID);
+    int counter = 1;
 
-        if ((memory -> ptr_arr)[i] != NULL && (memory -> ptr_arr)[i] -> ID == ID) {
-            free((memory -> ptr_arr)[i]);
-            (memory -> ptr_arr)[i] = NULL;
+    while (1) {
+
+        if ((memory -> ptr_arr)[index] -> ID == ID) {
+            free((memory -> ptr_arr)[index]);
+            (memory -> ptr_arr)[index] = NULL;
             memory -> used--;
             return 0;
         }
-    }
 
-    return -3;
+        if (index == memory -> arr_size)
+            index = 0;
+        else
+            index++;
+
+        if (counter == memory -> arr_size)
+            return -3;
+        else
+            counter++;
+    }
 }
 
 int memory_size_check(memory_t *mem)
@@ -210,18 +226,3 @@ int print_data(data_t *data)
                                                     data -> data_str,
                                                     data -> ID);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
