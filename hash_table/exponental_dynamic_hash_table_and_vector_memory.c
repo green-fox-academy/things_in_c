@@ -64,6 +64,8 @@ memory_t* create_memory(size_t size)
 
     temp_mem -> arr_size = size;
     temp_mem -> ptr_arr = temp_arr;
+	
+    return temp_mem;
 }
 
 data_t* create_data(int data_int, char* data_str, uint32_t ID)
